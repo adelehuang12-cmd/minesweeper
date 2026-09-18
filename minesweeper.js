@@ -31,8 +31,10 @@ function initGrid() {
 function renderBoard() {
     boardEl.innerHTML = "";
     boardEl.style.gridTemplateColumns = `repeat(${COLS}, 28px)`;
+    cellElements = [];
 
     for (let r = 0; r < ROWS; r++) {
+        const row = [];
         for (let c = 0; c < COLS; c++) {
             const cellEl = document.createElement("div");
             cellEl.className = "cell";
@@ -60,7 +62,7 @@ function renderBoard() {
             cellEl.addEventListener("touchend", (e) => {
                 e.preventDefault();
                 clearTimeout(touchTimer);
-                if (longPressed) {
+                if (!longPressed) {
                     handleLeftClick(r, c);
                 }
             });
