@@ -56,7 +56,7 @@ function renderBoard() {
                 }, 500);
             });
 
-            cellEl.addEventListener("touchened", (e) => {
+            cellEl.addEventListener("touchend", (e) => {
                 clearTimeout(touchTimer);
                 if (longPressed) {
                     e.preventDefault();
