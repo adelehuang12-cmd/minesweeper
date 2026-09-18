@@ -57,9 +57,10 @@ function renderBoard() {
             });
 
             cellEl.addEventListener("touchend", (e) => {
+                e.preventDefault();
                 clearTimeout(touchTimer);
                 if (longPressed) {
-                    e.preventDefault();
+                    handleLeftClick(r, c);
                 }
             });
 
