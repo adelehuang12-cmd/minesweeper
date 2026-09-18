@@ -43,6 +43,24 @@ function renderBoard() {
                 e.preventDefault();
                 handleRightClick(r, c);
             });
+            
+            let touchTimer = null;
+            let longPressed = false;
+
+            cellEl.addEventListener("touchstart", (e) => {
+                longPressed = false;
+                touchTimer = setTimeout(() => {
+                    longPressed = true;
+                    handleRightClick(r, c);
+                }, 500);
+            });
+
+            cellEl.addEventListener("touched", (e) => {
+                clearTimeout(touchTimer);
+                if (longPressed) {
+                    e.preventDefault();
+                }
+            });
 
             boardEl.appendChild(cellEl);
         }
