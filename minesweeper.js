@@ -1,6 +1,7 @@
 let ROWS = 9;
 let COLS = 9;
 let MINE_COUNT = 10;
+let cellElements = [];
 
 let grid = [];
 let firstClick = true;
@@ -65,7 +66,9 @@ function renderBoard() {
             });
 
             boardEl.appendChild(cellEl);
+            row.push(cellEl);
         }
+        cellElements.push(row);
     }
 }
 function placeMines(excludeRow, excludeCol) {
@@ -173,7 +176,7 @@ function handleRightClick(row, col) {
 
 function updateCellDisplay(row, col) {
     const cell = grid[row][col];
-    const el = boardEl.querySelector(`[data-row="${row}"][data-col="${col}"]`);
+    const el = cellElements[row][col];
     if (!el) return;
 
     el.className = "cell";
