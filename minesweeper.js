@@ -48,6 +48,7 @@ function renderBoard() {
             let longPressed = false;
 
             cellEl.addEventListener("touchstart", (e) => {
+                e.preventDefault();
                 longPressed = false;
                 touchTimer = setTimeout(() => {
                     longPressed = true;
